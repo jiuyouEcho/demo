@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="can" width = "600" height="600"></canvas>
+<script>
+    var can = document.getElementById("can");
+    var cans  = can.getContext("2d");
+ // cans.moveTo(100,100);
+ // cans.lineTo(200,100);
+
+ // cans.stroke();
+ // console.log(cans);
+
+//直虚线
+ //  var step = 10, start = 100;
+ //  while(true){
+ //      if(start >=500){
+ //          break;
+ //      }
+ //      cans.moveTo(start,100);
+ //      cans.lineTo(start+=step,100);
+ //      start+=step;
+ //  }
+ //  cans.stroke();
+
+    //斜虚线
+   // var stepX = 10,stepY = stepX*2/ 3,startX = 0,startY = 0;
+   // while(true){
+   //     if(startX>=600||startY>=400){
+   //         break;
+   //     }
+   //     cans.moveTo(startX,startY);
+   //     cans.lineTo(startX+=stepX,startY+=stepY);
+   //     startX +=stepX;
+   //     startY+=stepY;
+   // }
+
+    //cans.stroke();
+    //三角形
+  //  cans.moveTo(100,100);
+  //  cans.lineTo(200,100);
+  //  cans.lineTo(200,200);
+  //  cans.lineTo(100,200);  //正方形
+  //  cans.fill();
+
+   // cans.moveTo(100,100);
+   // cans.lineTo(200,100);
+   // cans.lineTo(300,200);
+   // cans.lineTo(100,200);
+   // cans.fill()
+
+    //非零环绕
+   // cans.moveTo(100,100);
+   // cans.lineTo(300,100);
+   // cans.lineTo(300,300);
+   // cans.lineTo(100,300);
+   // cans.lineTo(100,100);
+//
+   // cans.moveTo(150,150);
+   // cans.lineTo(150,250);
+   // cans.lineTo(250,250);
+   // cans.lineTo(250,150);
+   // cans.lineTo(150,150);
+   // cans.fill();
+//闭合路径
+//    cans.strokeStyle="red";
+// cans.moveTo(450,100);
+// cans.lineTo(350,200);
+// cans.lineTo(550,200);
+//
+// cans.closePath();
+// cans.stroke();
+//
+//新的路径
+// cans.beginPath();
+
+//  cans.lineWidth=5;
+
+//   cans.moveTo(100,100);
+//   cans.lineTo(100,200);
+//   cans.stroke();
+
+   //绘制虚线
+  // cans.moveTo(100,100);
+
+  // cans.lineTo(500,500);
+  // cans.setLineDash([15,5,5,5]);
+  // cans.stroke();
+
+//描边的颜色
+  //  for(var i = 0;i<256;i++){
+  //      cans.beginPath();
+  //      cans.strokeStyle="rgb("+(255-i)+","+i+","+i+")";
+  //      cans.moveTo(50+i,100);
+  //      cans.lineTo(50+i,300);
+  //      cans.stroke();
+  //  }
+//
+</script>
+</body>
+</html>

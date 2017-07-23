@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400" id="cas"></canvas>
+<script>
+    var can = document.getElementById( 'cas' );
+    var cans = can.getContext( '2d' );
+
+ //   var width = 20;
+//
+ //   cans.moveTo(50,50);
+ //   cans.lineTo(50,350);
+ //   cans.lineTo(350,350);
+ //   cans.stroke();
+//
+ //   cans.beginPath();
+ //   cans.moveTo(350-width,350-width/2);
+ //   cans.lineTo(350,350);
+ //   cans.lineTo(350-width,350+width/2);
+ //   cans.lineTo(350-width/2,350);
+ //   cans.lineTo(350-width,350-width/2)
+ //   cans.fill();
+//
+ //   cans.beginPath();
+ //   cans.moveTo(50-width/2,50+width);
+ //   cans.lineTo(50,50);
+ //   cans.lineTo(50+width/2,50+width);
+ //   cans.lineTo(50,50+width/2);
+ //   cans.moveTo(50-width/2,50+width);
+ //   cans.fill();
+
+    var paddingTop = 50,
+        paddingBottom = 50,
+        paddingLeft = 50,
+        paddingRight = 50;
+    var arrowHeight = 20,
+        arrowWidth = 10;
+    var x0 = paddingLeft,
+        y0 = can.height-paddingBottom;
+    //绘制坐标轴
+    cans.moveTo(paddingLeft,paddingTop);
+    cans.lineTo(x0,y0);
+    cans.lineTo(can.width-paddingRight,y0);
+    cans.stroke();
+    //绘制箭头
+    cans.beginPath();
+    //x
+    cans.moveTo(can.width-paddingRight-arrowHeight,y0-arrowWidth/2);
+    cans.lineTo(can.width-paddingRight,y0);
+    cans.lineTo(can.width-paddingRight-arrowHeight,y0+arrowWidth/2);
+    cans.lineTo(can.width-paddingRight-arrowHeight/2,y0);
+    cans.closePath();
+    //y
+    cans.moveTo(paddingLeft-arrowWidth/2,paddingTop+arrowHeight);
+    cans.lineTo(paddingTop,paddingLeft);
+    cans.lineTo(paddingLeft+arrowWidth/2,paddingTop+arrowHeight);
+    cans.lineTo(paddingLeft,paddingTop+arrowHeight/2);
+    cans.closePath();
+
+    cans.fill();
+    //绘制点
+    // 绘制一个点在坐标轴的中间
+    cans.beginPath();
+    var width = can.width-paddingLeft-paddingRight-arrowHeight;
+    var height = can.height-paddingTop-paddingBottom-arrowHeight;
+
+    var x = width/2+x0;
+    var y = y0-height/2;
+
+    //开始绘制居中矩形
+
+    var pointWidth = 10;
+    cans.fillStyle="red";
+    cans.moveTo(x-pointWidth/2,y-pointWidth/2);
+    cans.lineTo(x+pointWidth/2,y-pointWidth/2);
+    cans.lineTo(x+pointWidth/2,y+pointWidth/2);
+    cans.lineTo(x-pointWidth/2,y+pointWidth/2);
+    cans.closePath();
+
+    cans.fill();
+</script>
+</body>
+</html>

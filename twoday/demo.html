@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400" id="cas"></canvas>
+<script>
+    var cas = document.getElementById( 'cas' );
+
+    var ctx = cas.getContext( '2d' );
+	
+	//先定义变量
+	var padding = 50;
+	var x0 = padding,
+		y0 = cas.height - padding;
+	var arrowHeight = 20,
+		arrowWidth = 10;
+	var maxX = cas.width-padding*2,
+		maxY = cas.height - padding*2;
+
+	//绘制直线
+	ctx.moveTo(x0, y0);
+	ctx.lineTo(x0+maxX, y0);
+
+	ctx.moveTo(x0, y0);
+	ctx.lineTo(x0,y0-maxY);
+
+	ctx.stroke();
+
+	//绘制箭头
+	//y
+	ctx.beginPath();
+	ctx.moveTo(x0, padding);
+	ctx.lineTo(x0-arrowWidth/2,padding+arrowHeight);
+	ctx.lineTo(x0,padding+arrowHeight/2);
+	ctx.lineTo(x0+arrowWidth/2,padding+arrowHeight);
+	ctx.closePath();
+	ctx.fill();
+	//x
+	ctx.beginPath();
+	ctx.moveTo(x0+maxX, y0);
+	ctx.lineTo(x0+maxX-arrowHeight, y0-arrowWidth/2);
+	ctx.lineTo(x0+maxX-arrowHeight/2, y0);
+	ctx.lineTo(x0+maxX-arrowHeight,y0+arrowWidth/2 );
+	ctx.closePath();
+	ctx.fill();
+
+	//绘制点
+	var data1 = [ [ 10, 20 ], [ 15, 13 ], [ 17, 30 ], [ 30, 10 ], [ 20, 15 ] ,[59,20],[19,47],[27,34],[37,39]];
+
+	for(var i = 0;i<data1.length-1;i++){
+		for(var j = 0; j<data1.length-1-i;j++){
+			if(data1[j][0]>data1[j+1][0]){
+				var t = data1[j][0];
+				data1[j][0]=data1[j+1][0];
+				data1[j+1][0]=t;
+			}
+		}
+	}
+
+	var data3 = [];//存储计算后的坐标
+
+//计算出最大值和比例
+	var dataMaxX = Math.max.apply(null,data1.map(function(v){
+		return v[0]}));
+	var dataMaxY = Math.max.apply(null,data1.map(function(v){
+		return v[1]}));
+
+	ctx.beginPath();
+	ctx.fillStyle="red";
+	var width = 8;
+	for(var i = 0; i<data1.length;i++){
+		var tmpX = data1[i][0];
+		var tmpY = data1[i][1];
+
+		tmpX = tmpX*maxX/dataMaxX;
+		tmpY = tmpY*maxY/dataMaxY;
+
+		tmpX = tmpX+x0;
+		tmpY = y0-tmpY;
+
+
+		data3.push([tmpX,tmpY]);
+
+		ctx.fillRect(tmpX-width/2, tmpY-width/2, 8, 8);
+	}
+	//连线
+	ctx.beginPath();
+	ctx.strokeStyle = "red";
+	data3.forEach(function(v){
+		ctx[["moveTo","lineTo"][i==0?0:1]](v[0],v[1]);
+	});
+	ctx.stroke();
+</script>
+</body>
+</html>

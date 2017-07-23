@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400" id="cas"></canvas>
+<script>
+    var cas = document.getElementById( 'cas' );
+
+    var ctx = cas.getContext( '2d' );
+
+  	function toAngle ( radian ) {
+		return radian * 180 / Math.PI; 
+	}
+	function toRadian ( angle ) {
+		return angle * Math.PI / 180;
+	}
+	
+	var a = -90,
+		x = cas.width/2,
+		y = cas.height/2,
+		r = 100;
+
+	var timer = setInterval(function(){
+		a++;
+		if(a>=270){
+			clearInterval(timer);
+			a = 270;
+		}
+		ctx.moveTo(x, y);
+		ctx.arc(x, y, r, toRadian(-90), toRadian(a));
+		ctx.fill();
+	},20);
+
+
+	</script>
+</html>

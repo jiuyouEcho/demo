@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas id="can" width = "600" height="400"></canvas>
+<script>
+    var can = document.getElementById("can");
+    var cans  = can.getContext("2d");
+
+    var width = 30;
+    var rows = can.height/width;  //能画多少行
+    var cols = can.width/width;   //能画多少列
+
+//   for(var i = 0; i<rows;i++){
+//       for(var j = 0; j<cols;j++){
+//           cans.moveTo(j*width,(i+1)*width);
+//           cans.lineTo(j*width+width,(i+1)*width);
+
+//           cans.lineTo(j*width+width,i*width);
+//           cans.stroke();
+//       }
+//   }
+
+
+    for(var i = 0; i<rows;i++){
+        cans.moveTo(0,(i+1)*width);
+        cans.lineTo(can.width,(i+1)*width);
+        for(var j = 0; j<cols;j++){
+            cans.moveTo((j+1)*width,0);
+            cans.lineTo((j+1)*width,can.width);
+            cans.stroke();
+        }
+    }
+</script>
+</body>
+</html>

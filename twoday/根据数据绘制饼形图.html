@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400" id="cas"></canvas>
+<script>
+    var cas = document.getElementById( 'cas' );
+
+    var ctx = cas.getContext( '2d' );
+
+  	function toAngle ( radian ) {
+		return radian * 180 / Math.PI; 
+	}
+	function toRadian ( angle ) {
+		return angle * Math.PI / 180;
+	}
+	
+
+	var data = [ 11, 22, 33, 112, 34 ];
+	var colors = ['red','green','blue',"pink","yellow"];
+	var sum = 0;
+	var start = -90;
+	var x = cas.width/2,
+		y = cas.height/2,
+		r = 100;
+	data.forEach(function(v){
+		sum+=v;
+	});
+	data = data.map(function(v){
+		return {v:v,radius:v/sum*360};
+	});
+	//通过循环打印饼形图
+	console.log(data);
+	data.forEach(function(v,i){
+		ctx.beginPath();
+		ctx.fillStyle=colors[i];
+		ctx.moveTo(x,y);
+		ctx.arc(x, y, r, toRadian(start), toRadian(start+=v.radius));
+		ctx.fill();
+	});
+
+	</script>
+</html>

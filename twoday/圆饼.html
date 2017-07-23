@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400" id="cas"></canvas>
+<script>
+    var cas = document.getElementById( 'cas' );
+
+    var ctx = cas.getContext( '2d' );
+
+  	function toAngle ( radian ) {
+		return radian * 180 / Math.PI; 
+	}
+	function toRadian ( angle ) {
+		return angle * Math.PI / 180;
+	}
+	var x = cas.width/2,
+		y = cas.height/2,
+		radius = 100,
+		star = -90,
+		end = 270,
+		maxR = 10;
+
+	for(var i = radius;i>maxR;i-=10){
+		ctx.beginPath();
+		radius-=10;
+		ctx.fillStyle="rgb(0,"+i+","+(255-i*4)+")"
+		ctx.arc(x, y, radius, toRadian(star), toRadian(end));
+		ctx.fill();
+	}
+	
+	</script>
+</html>

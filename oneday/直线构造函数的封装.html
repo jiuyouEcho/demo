@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400" id="cas"></canvas>
+<script>
+    var can = document.getElementById( 'cas' );
+
+    var cans = cas.getContext( '2d' );
+
+ //   function Line(cans,x0,y0,x1,y1){
+ //       this.cans = cans;
+ //       this.x0 = x0;
+ //       this.y0 = y0;
+ //       this.x1 = x1;
+ //       this.y1 = y1;
+//
+ //   }
+ //   Line.prototype={
+ //       stroke:function(){
+ //           this.cans.moveTo(this.x0,this.y0);
+ //           this.cans.lineTo(this.x1,this.y1);
+ //           this.cans.stroke();
+ //       }
+ //   }
+ //  var line = new Line(cans,100,100,100,300);
+ //   line.stroke();
+
+
+    function Line(obj){
+        this.cans = obj.cans;
+        this.x0 = obj.x0;
+        this.y0 = obj.y0;
+        this.x1 = obj.x1;
+        this.y1 = obj.y1;
+        this.lineWidth = obj.lineWidth;
+        this.strokeStyle = obj.strokeStyle;
+    }
+    Line.prototype={
+        stroke:function(){
+            this.cans.moveTo(this.x0,this.y0);
+            this.cans.lineTo(this.x1,this.y1);
+
+            if ( this.strokeStyle ) {
+                this.cans.strokeStyle = this.strokeStyle;
+            }
+            if ( this.lineWidth ) {
+                this.cans.lineWidth = this.lineWidth;
+            }
+
+            this.cans.stroke();
+        }
+    }
+    var line = new Line({
+        cans: cans,
+        x0: 100,
+        y0: 100,
+        x1: 300,
+        y1: 100,
+        lineWidth:10
+    });
+    line.stroke();
+</script>
+</body>
+</html>

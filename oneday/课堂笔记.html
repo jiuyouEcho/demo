@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+canvas基本使用：
+canvas默认就会占据300*150的区域
+利用html行内属性为它设置宽高，不用使用css来设置（利用css不会增加像素点，只是将像素扩大了）
+使用语法canvas.getContext('2d')就会返回一个在当前页面上绘图的工具集，专门绘制平面图形
+开始绘图：首先绘制点，然后描边，才可以看到效果
+绘制虚线：
+cxt.moveTo(x,y) 设置绘图的起始点
+cxt.lineTO(x,y)  从当前位置，绘制直线到x,y
+cxt.strok() 描边（将绘制的所有点连起来）
+cxt.fill()  填充
+
+非零环绕原则：和为0时不填充，非零时填充
+
+必和路径：
+cxt.closePath()
+
+canvas中绘图是有状态的，在需要改变颜色，绘制方法，改变一些属性等，就需要改变绘图状态，
+使用beginPath()方法，开启一个新的路径
+
+线帽与拐角
+cxt.lineJoin() 拐角
+lineWidth()线宽   <h1>不受beginPath的限制</h1>
+lineCat()线帽
+
+虚线：setLineDash(数组):数组中存储的数字分别表示实线部分与空白部分的长度
+getLineDash()：获取上面这样的数组
+lineDashoffset():   从哪个位置开始绘图，虚线偏移
+
+线性属性：填充与描边的颜色
+strokeStyle  设置描边颜色
+fillStyle 设置填充颜色
+绘制坐标网格：
+
+</body>
+</html>

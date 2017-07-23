@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400" id="cas"></canvas>
+<script>
+    var cas = document.getElementById( 'cas' );
+
+    var ctx = cas.getContext( '2d' );
+
+  	function toAngle ( radian ) {
+		return radian * 180 / Math.PI; 
+	}
+	function toRadian ( angle ) {
+		return angle * Math.PI / 180;
+	}
+	
+
+	var x = cas.width/2,
+		y = cas.height/2,
+		r = 100,
+		start = -90,
+		end = 60;
+	ctx.moveTo(x, y);
+	ctx.arc(x, y, r, toRadian(start), toRadian(end));
+	ctx.closePath();
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.moveTo(x, y);
+	ctx.fillStyle= "green";
+	ctx.arc(x, y, r, toRadian(end), toRadian(120));
+	ctx.closePath();
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.moveTo(x, y);
+	ctx.fillStyle= "blue";
+	ctx.arc(x, y, r, toRadian(120), toRadian(240));
+	ctx.closePath();
+	ctx.fill();
+
+	ctx.beginPath();
+	ctx.moveTo(x, y);
+	ctx.fillStyle= "yellow";
+	ctx.arc(x, y, r, toRadian(240), toRadian(270));
+	ctx.closePath();
+	ctx.fill();
+
+
+	</script>
+</html>
